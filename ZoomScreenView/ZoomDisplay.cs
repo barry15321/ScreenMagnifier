@@ -78,7 +78,8 @@ namespace ZoomScreenView
 
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            Image MainScreen = Cap.CaptureMainScreen();
+            Image MainScreen = Cap.CaptureAllScreen();
+            //Image MainScreen = Cap.CaptureMainScreen();
             Image<Bgr, byte> MainSrc = new Image<Bgr, byte>((Bitmap)MainScreen);
                         
             Mat CutScreen = new Mat(MainSrc.Mat, UserRect);

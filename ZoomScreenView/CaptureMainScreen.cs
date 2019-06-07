@@ -18,7 +18,6 @@ namespace ZoomScreenView
             InitializeComponent();
             this.Cursor = Cursors.Arrow;
             Screen.Refresh();
-            //CaptureScreen();
         }
 
         #region Variable Setting
@@ -112,7 +111,8 @@ namespace ZoomScreenView
         public void CaptureScreen()
         {
             ScreenCapture Cap = new ScreenCapture();
-            Image src = Cap.CaptureMainScreen();
+            Image src = Cap.CaptureAllScreen();
+            //Image src = Cap.CaptureMainScreen(); 
             this.FormBorderStyle = FormBorderStyle.None;
             this.Width = src.Width - 1;
             this.Height = src.Height - 1;

@@ -6,9 +6,28 @@ using System.Windows.Forms;
 
 public class ScreenCapture
 {
-    public Image CaptureMainScreen()
+    public Image CaptureAllScreen()
     {
-        return CaptureWindow(User32.GetDesktopWindow());
+        return (Image)CopyGraphicsAllScreen();
+        //return CaptureWindow(User32.GetDesktopWindow());
+    }
+
+    private Bitmap CopyGraphicsAllScreen()
+    {
+        int screenLeft = SystemInformation.VirtualScreen.Left;
+        int screenTop = SystemInformation.VirtualScreen.Top;
+        int screenWidth = SystemInformation.VirtualScreen.Width;
+        int screenHeight = SystemInformation.VirtualScreen.Height;
+
+        // Create a bitmap of the appropriate size to receive the screenshot.
+        Bitmap AllSrc = null;
+        Bitmap bmp = new Bitmap(screenWidth, screenHeight);
+        Graphics g = Graphics.FromImage(bmp);
+        g.CopyFromScreen(screenLeft, screenTop, 0, 0, bmp.Size);
+
+        //bmp.Save(@"C:\Users\ReplacedToy\Desktop\" + "SaveAllScreen.jpg", ImageFormat.Jpeg);
+        AllSrc = bmp;
+        return AllSrc;
     }
 
     /// <summary>
@@ -18,13 +37,21 @@ public class ScreenCapture
     /// <returns></returns>
     public Image CaptureWindow(IntPtr handle)
     {
-        // get te hDC of the target window
+        int TotalWidth = 0, TotalHeight = 0;
+        for (int i = 0; i < Screen.AllScreens.Length; i++)
+        {
+            Screen src = Screen.AllScreens[i];
+            TotalWidth += src.Bounds.Width;
+            TotalHeight += src.Bounds.Height;
+        }
+
         IntPtr hdcSrc = User32.GetWindowDC(handle);
-        // get the size
         User32.RECT windowRect = new User32.RECT();
         User32.GetWindowRect(handle, ref windowRect);
-        int width = windowRect.right - windowRect.left;
-        int height = windowRect.bottom - windowRect.top;
+        int width = TotalWidth - Screen.PrimaryScreen.Bounds.Left;
+        int height = TotalHeight - Screen.PrimaryScreen.Bounds.Top;
+        //int width = windowRect.right - windowRect.left;
+        //int height = windowRect.bottom - windowRect.top;
         // create a device context we can copy to
         IntPtr hdcDest = GDI32.CreateCompatibleDC(hdcSrc);
         // create a bitmap we can copy it to,

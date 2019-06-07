@@ -44,9 +44,9 @@
             // CaptureBtn
             // 
             this.CaptureBtn.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CaptureBtn.Location = new System.Drawing.Point(336, 69);
+            this.CaptureBtn.Location = new System.Drawing.Point(328, 69);
             this.CaptureBtn.Name = "CaptureBtn";
-            this.CaptureBtn.Size = new System.Drawing.Size(111, 28);
+            this.CaptureBtn.Size = new System.Drawing.Size(119, 28);
             this.CaptureBtn.TabIndex = 1;
             this.CaptureBtn.Text = "CaptureScreen";
             this.CaptureBtn.UseVisualStyleBackColor = true;
@@ -84,20 +84,21 @@
             // captureMainScreenToolStripMenuItem
             // 
             this.captureMainScreenToolStripMenuItem.Name = "captureMainScreenToolStripMenuItem";
-            this.captureMainScreenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.captureMainScreenToolStripMenuItem.Text = "Zoom Screen";
+            this.captureMainScreenToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.captureMainScreenToolStripMenuItem.Text = "Monitor Info";
+            this.captureMainScreenToolStripMenuItem.Click += new System.EventHandler(this.captureMainScreenToolStripMenuItem_Click);
             // 
             // listAllHWndToolStripMenuItem
             // 
             this.listAllHWndToolStripMenuItem.Name = "listAllHWndToolStripMenuItem";
-            this.listAllHWndToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.listAllHWndToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.listAllHWndToolStripMenuItem.Text = "Window Info";
             this.listAllHWndToolStripMenuItem.Click += new System.EventHandler(this.listAllHWndToolStripMenuItem_Click);
             // 
             // XLabel
             // 
             this.XLabel.AutoSize = true;
-            this.XLabel.Location = new System.Drawing.Point(119, 75);
+            this.XLabel.Location = new System.Drawing.Point(98, 75);
             this.XLabel.Name = "XLabel";
             this.XLabel.Size = new System.Drawing.Size(62, 17);
             this.XLabel.TabIndex = 8;
@@ -109,18 +110,19 @@
             this.Xtbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Xtbx.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Xtbx.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.Xtbx.Location = new System.Drawing.Point(179, 72);
+            this.Xtbx.Location = new System.Drawing.Point(158, 72);
             this.Xtbx.MaxLength = 3;
             this.Xtbx.Multiline = true;
             this.Xtbx.Name = "Xtbx";
             this.Xtbx.Size = new System.Drawing.Size(38, 22);
             this.Xtbx.TabIndex = 10;
             this.Xtbx.TabStop = false;
+            this.Xtbx.Text = "2.1";
             // 
             // YLabel
             // 
             this.YLabel.AutoSize = true;
-            this.YLabel.Location = new System.Drawing.Point(225, 75);
+            this.YLabel.Location = new System.Drawing.Point(212, 75);
             this.YLabel.Name = "YLabel";
             this.YLabel.Size = new System.Drawing.Size(62, 17);
             this.YLabel.TabIndex = 9;
@@ -131,11 +133,12 @@
             this.Ytbx.BackColor = System.Drawing.Color.Gainsboro;
             this.Ytbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Ytbx.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Ytbx.Location = new System.Drawing.Point(284, 72);
+            this.Ytbx.Location = new System.Drawing.Point(271, 72);
             this.Ytbx.MaxLength = 3;
             this.Ytbx.Name = "Ytbx";
             this.Ytbx.Size = new System.Drawing.Size(38, 23);
             this.Ytbx.TabIndex = 11;
+            this.Ytbx.Text = "2.0";
             // 
             // ZoomScreen
             // 

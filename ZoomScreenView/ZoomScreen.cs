@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Drawing.Imaging;
 
 namespace ZoomScreenView
 {
@@ -17,6 +18,8 @@ namespace ZoomScreenView
         public ZoomScreen() 
         {
             InitializeComponent();
+            ResizeObjectSize();
+            //GetCurrentScreenSize();
         }
 
         ScreenCapture Shot = new ScreenCapture();
@@ -41,10 +44,9 @@ namespace ZoomScreenView
             else
                 return "";
         }
-
-
+        
         private void CaptureBtn_Click(object sender, EventArgs e)
-        {            
+        {
             if (Xtbx.Text.ToString().Length != 0)
                 x = Convert.ToDouble(RegexStr(Xtbx.Text.ToString(), @"^[0-9]+(\.[0-9]{1,2})?$"));
             else
@@ -76,9 +78,59 @@ namespace ZoomScreenView
         }
 
         private void listAllHWndToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {   
             hwdList = new hWndList();
             hwdList.Show();
+        }
+
+        private void GetCurrentScreenSize()
+        {
+            Console.WriteLine("Screen Counts : " + Screen.AllScreens.Count());
+            for (int i = 0; i < Screen.AllScreens.Count(); i++)
+            {
+                Screen CurrentScreen = Screen.AllScreens[i];
+                Console.WriteLine(CurrentScreen.BitsPerPixel + " pixels.");
+                Console.WriteLine(CurrentScreen.Bounds);
+                Console.WriteLine(CurrentScreen.DeviceName + " . device name");
+                Console.WriteLine(CurrentScreen.Primary);
+                Console.WriteLine(CurrentScreen.WorkingArea);
+            }
+        }
+        
+        private void captureMainScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Msgtxt = "";
+            for (int i = 0; i < Screen.AllScreens.Count(); i++)
+            {
+                Screen CurrentScreen = Screen.AllScreens[i];
+                Msgtxt += "Screen [" + i + "] , Is Primary ? " + CurrentScreen.Primary + "\n";
+                Msgtxt += " , X : " + CurrentScreen.Bounds.X + " , Y : " + CurrentScreen.Bounds.Y +
+                    " , Width : " + CurrentScreen.Bounds.Width + " , Height : " + CurrentScreen.Bounds.Height + "\n";
+            }
+            MessageBox.Show("Screen Counts : " + Screen.AllScreens.Count() + "\n\n" + Msgtxt);
+        }
+
+        private void ResizeObjectSize()
+        {
+            int DesignWindowWidth = 1600, DesignWindowHeight = 900;
+
+            Rectangle MainWindow = Screen.PrimaryScreen.Bounds;
+
+            if (MainWindow.Width < DesignWindowWidth || MainWindow.Height < DesignWindowHeight)
+            {
+                HintLabel.Width *= (MainWindow.Width / DesignWindowWidth);
+                HintLabel.Height *= (MainWindow.Height / DesignWindowHeight);
+                CaptureBtn.Width *= (MainWindow.Width / DesignWindowWidth);
+                CaptureBtn.Height *= (MainWindow.Height / DesignWindowHeight);
+                XLabel.Width *= (MainWindow.Width / DesignWindowWidth);
+                XLabel.Height *= (MainWindow.Height / DesignWindowHeight);
+                Xtbx.Width *= (MainWindow.Width / DesignWindowWidth);
+                Xtbx.Height *= (MainWindow.Height / DesignWindowHeight);
+                YLabel.Width *= (MainWindow.Width / DesignWindowWidth);
+                YLabel.Height *= (MainWindow.Height / DesignWindowHeight);
+                Ytbx.Width *= (MainWindow.Width / DesignWindowWidth);
+                Ytbx.Height *= (MainWindow.Height / DesignWindowHeight);
+            }
         }
     }
 }
