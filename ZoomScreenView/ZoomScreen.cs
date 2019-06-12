@@ -18,7 +18,7 @@ namespace ZoomScreenView
         public ZoomScreen() 
         {
             InitializeComponent();
-            ResizeObjectSize();
+            //ResizeObjectSize();
             //GetCurrentScreenSize();
         }
 
@@ -115,21 +115,26 @@ namespace ZoomScreenView
             int DesignWindowWidth = 1600, DesignWindowHeight = 900;
 
             Rectangle MainWindow = Screen.PrimaryScreen.Bounds;
+            //Rectangle SubWindow = new Rectangle(0, 0, 1366, 768);
 
             if (MainWindow.Width < DesignWindowWidth || MainWindow.Height < DesignWindowHeight)
             {
-                HintLabel.Width *= (MainWindow.Width / DesignWindowWidth);
-                HintLabel.Height *= (MainWindow.Height / DesignWindowHeight);
-                CaptureBtn.Width *= (MainWindow.Width / DesignWindowWidth);
-                CaptureBtn.Height *= (MainWindow.Height / DesignWindowHeight);
-                XLabel.Width *= (MainWindow.Width / DesignWindowWidth);
-                XLabel.Height *= (MainWindow.Height / DesignWindowHeight);
-                Xtbx.Width *= (MainWindow.Width / DesignWindowWidth);
-                Xtbx.Height *= (MainWindow.Height / DesignWindowHeight);
-                YLabel.Width *= (MainWindow.Width / DesignWindowWidth);
-                YLabel.Height *= (MainWindow.Height / DesignWindowHeight);
-                Ytbx.Width *= (MainWindow.Width / DesignWindowWidth);
-                Ytbx.Height *= (MainWindow.Height / DesignWindowHeight);
+                double WidthMag = (double)DesignWindowWidth / (double)MainWindow.Width, HeightMag = (double)DesignWindowHeight / (double)MainWindow.Height;
+                this.Size = new Size((int)((double)this.Size.Width / WidthMag), (int)((double)this.Size.Height / HeightMag));
+                //this.Size = new Size(this.Size.Width / 2, this.Size.Height / 2);
+                HintLabel.Size = new Size((int)((double)HintLabel.Size.Width / WidthMag), (int)((double)HintLabel.Size.Height / HeightMag));
+                HintLabel.Location = new Point((int)((double)HintLabel.Location.X / WidthMag), (int)((double)HintLabel.Location.Y / HeightMag));
+                CaptureBtn.Size = new Size((int)((double)CaptureBtn.Size.Width / WidthMag), (int)((double)CaptureBtn.Size.Height / HeightMag));
+                CaptureBtn.Location = new Point((int)((double)CaptureBtn.Location.X / WidthMag), (int)((double)CaptureBtn.Location.Y / HeightMag));
+                XLabel.Size = new Size((int)((double)XLabel.Size.Width / WidthMag), (int)((double)XLabel.Size.Height / HeightMag));
+                XLabel.Location = new Point((int)((double)XLabel.Location.X / WidthMag), (int)((double)XLabel.Location.Y / HeightMag));
+                YLabel.Size = new Size((int)((double)YLabel.Size.Width / WidthMag), (int)((double)YLabel.Size.Height / HeightMag));
+                YLabel.Location = new Point((int)((double)YLabel.Location.X / WidthMag), (int)((double)YLabel.Location.Y / HeightMag));
+                Xtbx.Size = new Size((int)((double)Xtbx.Size.Width / WidthMag), (int)((double)Xtbx.Size.Height / HeightMag));
+                Xtbx.Location = new Point((int)((double)Xtbx.Location.X / WidthMag), (int)((double)Xtbx.Location.Y / HeightMag));
+                Ytbx.Size = new Size((int)((double)Ytbx.Size.Width / WidthMag), (int)((double)Ytbx.Size.Height / HeightMag));
+                Ytbx.Location = new Point((int)((double)Ytbx.Location.X / WidthMag), (int)((double)Ytbx.Location.Y / HeightMag));
+
             }
         }
     }

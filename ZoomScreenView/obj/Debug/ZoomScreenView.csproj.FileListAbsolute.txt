@@ -71,3 +71,4 @@ C:\Users\ReplacedToy\source\repos\ZoomScreenView\ZoomScreenView\obj\Debug\ZoomSc
 C:\Users\ReplacedToy\source\repos\ZoomScreenView\ZoomScreenView\obj\Debug\ZoomScreenView.csproj.CoreCompileInputs.cache
 C:\Users\ReplacedToy\source\repos\ZoomScreenView\ZoomScreenView\obj\Debug\ZoomScreenView.exe
 C:\Users\ReplacedToy\source\repos\ZoomScreenView\ZoomScreenView\obj\Debug\ZoomScreenView.pdb
+C:\Users\ReplacedToy\source\repos\ZoomScreenView\ZoomScreenView\obj\Debug\ZoomScreenView.csprojResolveAssemblyReference.cache
