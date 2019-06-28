@@ -71,8 +71,8 @@ namespace ZoomScreenView
                 MouseEndPosition = e.Location;
                 UserSelectRange.Location = new System.Drawing.Point(Math.Min(MouseStartPosition.X, MouseEndPosition.X), Math.Min(MouseStartPosition.Y, MouseEndPosition.Y));
                 UserSelectRange.Size = new Size(Math.Abs(MouseStartPosition.X - MouseEndPosition.X), Math.Abs(MouseStartPosition.Y - MouseEndPosition.Y));
-                Screen.Invalidate();
-
+                //Screen.Invalidate();
+                Screen.Refresh();
             }
         }
 
@@ -82,28 +82,37 @@ namespace ZoomScreenView
             StartDraw = false;
             ConfirmBtn.Location = new Point(UserSelectRange.X + UserSelectRange.Width, UserSelectRange.Y + UserSelectRange.Height);
             ConfirmBtn.Visible = true;
-            
         }
 
         private void Screen_Paint(object sender, PaintEventArgs e)
         {
-            //若允許繪圖
-            if (StartDraw)
+            ////若允許繪圖
+            //if (StartDraw) <- 累贅程式碼
+            //{
+            //    //確認當前PictureBox有圖片 
+            //    if (Screen.Image != null) <- 累贅程式碼
+            //    {
+            //        //選取範圍不為空,且長寬都大於0
+            //        if (UserSelectRange != null <- 累贅程式碼 && UserSelectRange.Width > 0 && UserSelectRange.Height > 0)
+            //        {
+            //            //繪製圖片
+            //            SolidBrush brush = new SolidBrush(Color.FromArgb(50, 0, 100, 255));
+            //            e.Graphics.FillRectangle(brush, UserSelectRange);
+            //            //Pen p = new Pen(Color.FromArgb(50, 0, 100, 255));
+            //            //e.Graphics.DrawRectangle(p, UserSelectRange);
+            //        }
+            //    }
+            //}
+
+            //選取範圍不為空,且長寬都大於0
+            if (UserSelectRange.Width > 0 && UserSelectRange.Height > 0)
             {
-                //確認當前PictureBox有圖片
-                if (Screen.Image != null)
-                {
-                    //選取範圍不為空,且長寬都大於0
-                    if (UserSelectRange != null && UserSelectRange.Width > 0 && UserSelectRange.Height > 0)
-                    {
-                        //繪製圖片
-                        SolidBrush brush = new SolidBrush(Color.FromArgb(50, 0, 100, 255));
-                        e.Graphics.FillRectangle(brush, UserSelectRange);
-                        //Pen p = new Pen(Color.FromArgb(50, 0, 100, 255));
-                        //e.Graphics.DrawRectangle(p, UserSelectRange);
-                    }
-                }
+                //繪製圖片
+                SolidBrush brush = new SolidBrush(Color.FromArgb(50, 0, 100, 255));
+                e.Graphics.FillRectangle(brush, UserSelectRange);
+                
             }
+            
         }
 
         #endregion

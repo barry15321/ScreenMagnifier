@@ -69,12 +69,19 @@ namespace ZoomScreenView
         {
             CaptureMainScreen sub = (CaptureMainScreen)sender;
             UserRect = sub.UserSelectRect;
-            
+
+            UserRect.X = (UserRect.X <= 0) ? 1 : UserRect.X;
+            UserRect.Y = (UserRect.Y <= 0) ? 1 : UserRect.Y;
+            UserRect.Width = (UserRect.Width <= 0) ? 1 : UserRect.Width;
+            UserRect.Height = (UserRect.Height <= 0) ? 1 : UserRect.Height;
+            //in case 0 or nagitive
             Console.WriteLine(UserRect.X + " , " + UserRect.Y + " , " + UserRect.Width + " , " + UserRect.Height);//user rectangle need adjust
             this.Show();
 
             ZoomDisplay display = new ZoomDisplay(UserRect, x, y);
             display.Show();
+
+            this.Cursor = Cursors.Default;
         }
 
         private void listAllHWndToolStripMenuItem_Click(object sender, EventArgs e)
