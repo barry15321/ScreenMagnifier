@@ -1,10 +1,10 @@
 
-# ZoomScreenViewer
+# ScreenMaginifer
 
 
-### **x 欄位 : 放大寬度倍率**
+### **Width 欄位 : 放大寬度倍率**
 
-### **y 欄位 : 放大高度倍率**
+### **Height 欄位 : 放大高度倍率**
 
 ### **Capture Button : 擷取全螢幕畫面，左鍵點擊拖曳想要放大的範圍。**
 
@@ -15,7 +15,7 @@
 ![Screen Capture](https://github.com/barry15321/ZoomScreenViewer/blob/master/pic_2.png)
 
 
-### **放大視窗出現後按 Esc 即會關閉**
+### **放大視窗出現後按 Esc 即可關閉**
 
 ![Screen Capture](https://github.com/barry15321/ZoomScreenViewer/blob/master/pic_3.png)
 
